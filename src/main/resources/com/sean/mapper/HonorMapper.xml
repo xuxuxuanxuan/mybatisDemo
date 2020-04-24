@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sean.mapper.HonorMapper">
+
+    <resultMap id="honorMapper" type="honor">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="honor_name" jdbcType="VARCHAR" property="honorName" />
+        <collection property="gradeList" javaType="list" ofType="com.sean.entity.Grade">
+            <result column="class_name" jdbcType="VARCHAR" property="className" />
+            <collection property="studentList" javaType="list" ofType="com.sean.entity.Student">
+                <result column="name" jdbcType="VARCHAR" property="name" />
+            </collection>
+        </collection>
+
+    </resultMap>
+
+    <select id="findHonorByType" parameterType="string" resultMap="honorMapper">
+        SELECT th.honor_name, tg.class_name, ts.name
+		FROM t_honor th
+		LEFT JOIN t_grade_honor tgh ON tgh.honor_id = th.hid
+		LEFT JOIN t_grade tg ON tg.gid = tgh.grade_id
+		LEFT JOIN t_student ts ON ts.grade_id = tg.gid
+		WHERE th.honor_name = #{honorName}
+
+    </select>
+
+</mapper>

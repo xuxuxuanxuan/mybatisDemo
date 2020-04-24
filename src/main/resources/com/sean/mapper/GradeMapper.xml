@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sean.mapper.GradeMapper">
+
+    <resultMap id="gradeMapper" type="grade">
+        <id column="gid" jdbcType="BIGINT" property="gid"/>
+        <result column="class_name" jdbcType="VARCHAR" property="className" />
+        <result column="slogan" jdbcType="VARCHAR" property="slogan" />
+        <collection property="studentList" javaType="list" ofType="com.sean.entity.Student">
+            <id column="sid" jdbcType="BIGINT" property="sid" />
+            <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+            <result column="name" jdbcType="VARCHAR" property="name" />
+        </collection>
+
+    </resultMap>
+
+    <select id="findGradeBySlogan" parameterType="java.lang.String" resultMap="gradeMapper">
+        SELECT * from t_student ts,t_grade tg where ts.grade_id = tg.gid and slogan = #{slogan}
+    </select>
+
+</mapper>

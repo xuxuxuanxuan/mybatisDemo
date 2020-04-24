@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <properties resource="configuration.properties"></properties>
+
+    <settings>
+        <!-- 使全局的映射器启用或禁用缓存。 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 允许JDBC支持生成的键。 -->
+        <setting name="useGeneratedKeys" value="false"/>
+
+    </settings>
+
+    <typeAliases>
+        <package name="com.sean.entity"/>
+    </typeAliases>
+
+    <!--<typeHandlers>-->
+        <!--<typeHandler jdbcType="VARCHAR" javaType="String" handler="com.sean.handler.MyTypeHandler"/>-->
+    <!--</typeHandlers>-->
+
+    <!--<objectFactory type="com.sean.factory.MyObjectFactory">-->
+        <!--<property name="prop1" value="value1"/>-->
+    <!--</objectFactory>-->
+
+
+    <environments default="development">
+         <environment id="development">
+          <transactionManager type="JDBC"/>
+           <dataSource type="POOLED">
+
+              <!-- 上面指定了数据库配置文件， 配置文件里面也是对应的这四个属性 -->
+             <property name="driver" value="${driver}"/>
+              <property name="url" value="${url}"/>
+              <property name="username" value="${username}"/>
+             <property name="password" value="${password}"/>
+
+          </dataSource>
+       </environment>
+
+    </environments>
+
+    <!--<databaseIdProvider type="DB_VENDOR">-->
+        <!--<property name="Oracle" value="oracle"/>-->
+        <!--<property name="MySQL" value="mysql"/>-->
+        <!--<property name="DB2" value="db2"/>-->
+    <!--</databaseIdProvider>-->
+
+    <mappers>
+        <!--<mapper class="com.sean.mapper.UserMapper"/>-->
+        <!--<mapper url="file:///git2/mybatisDemo/src/main/resources/com/sean/mapper/UserMapper.xml"/>-->
+        <mapper resource="com/sean/mapper/UserMapper.xml"/>
+        <mapper resource="com/sean/mapper/GradeMapper.xml"/>
+        <mapper resource="com/sean/mapper/StudentMapper.xml"/>
+        <mapper resource="com/sean/mapper/HonorMapper.xml"/>
+        <!--<package name ="com.sean.mapper"/>-->
+    </mappers>
+
+
+</configuration>

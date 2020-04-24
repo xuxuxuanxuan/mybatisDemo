@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sean.mapper.UserMapper">
+    <!--<resultMap id="userMapper" type="user">-->
+        <!--<result property="id" column="id"/>-->
+        <!--<result property="name" column="name"/>-->
+        <!--<result property="mobile" column="mobile" jdbcType="VARCHAR" javaType="String"/>-->
+        <!--<result property="gender" column="gender" />-->
+    <!--</resultMap>-->
+
+    <!--<select id="findUserById" parameterType="java.lang.Long" resultMap="userMapper">-->
+        <!--SELECT * FROM user WHERE id = #{id}-->
+    <!--</select>-->
+
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.sean.entity.User">
+        SELECT id,name,mobile,age FROM user WHERE name = #{name}
+    </select>
+
+</mapper>
