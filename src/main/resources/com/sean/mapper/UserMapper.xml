@@ -23,12 +23,57 @@
         SELECT *  FROM user
         <trim prefix="where" prefixOverrides="and">
             <if test="name !=null">
-                name = #{name}
+                name like concat('%',#{name},'%')
             </if>
             and age=20
         </trim>
     </select>
 
+    <!--使用xml语法转义：>为大于号“ >”; < 为小于号 “<” ;-->
+    <select id="findUserByNameAndTime" parameterType="java.lang.String" resultType="com.sean.entity.User">
+        SELECT *  FROM user
+        <trim prefix="where" prefixOverrides="and">
+            <if test="name !=null">
+                name like concat('%',#{name},'%')
+            </if>
+            <![CDATA[ and create_time <= #{createTime}]]>
+            and create_time &lt;= #{createTime}
+        </trim>
+    </select>
+
+    <!--使用<![CDATA[]]>，因为CDATA 部分中的所有内容都会被解析器忽略，所以建议使用<![CDATA[]]>-->
+    <!--<select id="findUserByNameAndTime" parameterType="java.lang.String" resultType="com.sean.entity.User">-->
+        <!--SELECT *  FROM user-->
+        <!--<trim prefix="where" prefixOverrides="and">-->
+            <!--<if test="name !=null">-->
+                <!--name like concat('%',#{name},'%')-->
+            <!--</if>-->
+            <!--<![CDATA[ and create_time <= #{createTime}]]>-->
+        <!--</trim>-->
+    <!--</select>-->
+
+    <!-- like  使用bind -->
+    <!--<select id="findUserByName2" parameterType="java.lang.String" resultType="com.sean.entity.User">-->
+        <!--<bind name="pattern" value="'%' + name + '%'"></bind>-->
+        <!--SELECT *  FROM user-->
+        <!--<trim prefix="where" prefixOverrides="and">-->
+            <!--<if test="name !=null">-->
+                <!--name like #{pattern}-->
+            <!--</if>-->
+            <!--and age=20-->
+        <!--</trim>-->
+    <!--</select>-->
+
+    <!-- like  使用 concat -->
+    <!--<select id="findUserByName" parameterType="java.lang.String" resultType="com.sean.entity.User">-->
+        <!--SELECT *  FROM user-->
+        <!--<trim prefix="where" prefixOverrides="and">-->
+            <!--<if test="name !=null">-->
+                <!--name like concat('%',#{name},'%')-->
+            <!--</if>-->
+            <!--and age=20-->
+        <!--</trim>-->
+    <!--</select>-->
 
 
     <select id="findUserByAge" resultType="com.sean.entity.User">

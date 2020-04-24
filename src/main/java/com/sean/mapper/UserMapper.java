@@ -3,11 +3,14 @@ package com.sean.mapper;
 import com.sean.entity.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface UserMapper {
 
     User findUserByName(@Param("name") String name);
+
+    User findUserByNameAndTime(@Param("name") String name, @Param("createTime")Date createTime);
 
     User findUser(@Param("age") Integer age,@Param("name") String name,@Param("mobile") String mobile);
 
