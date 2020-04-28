@@ -92,14 +92,15 @@
 
     <update id="updateUserByName">
         update user
-        <trim prefix="set" suffixOverrides=",">
-            <if test="mobile != null">
-                mobile = #{mobile},
-            </if>
+        <set>
             age = 20,
-        </trim>
+            <if test="gender.id == 1">
+                mobile = 000,
+            </if>
+        </set>
          where name = #{name}
     </update>
+
 
     <delete id="deleteUser">
         delete from user where name=#{name}

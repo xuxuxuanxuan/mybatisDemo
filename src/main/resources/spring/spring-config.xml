@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <context:component-scan base-package="com.sean.entity" />
+    <!--构造器注入-->
+    <!--<bean id="user" class="com.sean.entity.User">-->
+        <!--<constructor-arg index="0" value="德莱文"/>-->
+        <!--<constructor-arg index="1" value="18"/>-->
+    <!--</bean>-->
+    <bean id="beanPostProcessor" class="com.sean.spring.BeanPostProcessorImpl"/>
+    <!--<bean id="user" class="com.sean.entity.User" init-method="init" destroy-method="myDestroy">-->
+        <!--<property name="name" value="无敌"></property>-->
+        <!--<property name="age" value="18"></property>-->
+    <!--</bean>-->
+</beans>

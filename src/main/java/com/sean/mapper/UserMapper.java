@@ -1,6 +1,7 @@
 package com.sean.mapper;
 
 import com.sean.entity.User;
+import com.sean.enums.SexEnum;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public interface UserMapper {
 
     void insertUser(User user);
 
-    void updateUserByName(@Param("mobile") String mobile,@Param("name") String name);
+    void updateUserByName(@Param("gender") SexEnum gender, @Param("name") String name);
 
     void deleteUser(String name);
 
