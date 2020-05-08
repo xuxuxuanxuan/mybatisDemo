@@ -1,20 +1,12 @@
+package mybatis;
+
 import com.sean.entity.*;
 import com.sean.mapper.GradeMapper;
 import com.sean.mapper.HonorMapper;
-import com.sean.mapper.StudentMapper;
-import com.sean.mapper.UserMapper;
 import com.sean.utils.SessionUtil;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * @Author: sean.xu

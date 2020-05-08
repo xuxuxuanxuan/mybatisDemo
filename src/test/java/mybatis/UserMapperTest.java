@@ -1,5 +1,6 @@
+package mybatis;
+
 import com.sean.entity.User;
-import com.sean.entity.UserParam;
 import com.sean.enums.SexEnum;
 import com.sean.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -45,7 +46,6 @@ public class UserMapperTest {
         SqlSession sqlSession = getSessionFactory().openSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         User user = userMapper.findUser(null,null,"111");
-
         logger.debug(user);
     }
 

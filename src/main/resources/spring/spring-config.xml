@@ -6,15 +6,46 @@
   http://www.springframework.org/schema/beans/spring-beans.xsd
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-    <context:component-scan base-package="com.sean.entity" />
-    <!--构造器注入-->
-    <!--<bean id="user" class="com.sean.entity.User">-->
-        <!--<constructor-arg index="0" value="德莱文"/>-->
-        <!--<constructor-arg index="1" value="18"/>-->
+    <!--<context:component-scan base-package="com.sean.spring" />-->
+    <!--<context:annotation-config></context:annotation-config>-->
+    <!--<bean id="user" class="com.sean.spring.User"/>-->
+    <!--<bean id="userFactory" class="com.sean.spring.bean.UserFactory" factory-method="createInstance"/>-->
+
+    <!--使用type属性显式指定构造函数参数的类型-->
+    <!--<bean id="exampleBean" class="com.sean.spring.bean.ExampleBean">-->
+        <!--<constructor-arg type="int" value="7500000"/>-->
+        <!--<constructor-arg type="java.lang.String" value="42"/>-->
     <!--</bean>-->
-    <bean id="beanPostProcessor" class="com.sean.spring.BeanPostProcessorImpl"/>
-    <!--<bean id="user" class="com.sean.entity.User" init-method="init" destroy-method="myDestroy">-->
-        <!--<property name="name" value="无敌"></property>-->
-        <!--<property name="age" value="18"></property>-->
+
+    <!--使用index属性明确指定构造函数 arguments 的索引-->
+    <!--<bean id="exampleBean" class="com.sean.spring.bean.ExampleBean">-->
+        <!--<constructor-arg index="0" value="7500000"/>-->
+        <!--<constructor-arg index="1" value="42"/>-->
     <!--</bean>-->
+
+    <!--使用构造函数参数 name 进行 value 消歧-->
+    <!--<bean id="exampleBean" class="com.sean.spring.bean.ExampleBean">-->
+        <!--<constructor-arg name="years" value="7500000"/>-->
+        <!--<constructor-arg name="ultimateAnswer" value="42"/>-->
+    <!--</bean>-->
+
+    <bean id="testAdvisor" class="com.sean.spring.TestAdvisor"/>
+
+    <bean id="testAOP" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="com.sean.spring.TestTarget"/>
+        </property>
+
+        <property name="interceptorNames">
+            <list>
+                <value>testAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+
+
 </beans>
