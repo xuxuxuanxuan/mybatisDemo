@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--<context:component-scan base-package="com.sean.spring.bean"/>-->
+
+    <!--<bean id="bBean" class="com.sean.spring.bean.B">-->
+        <!--<constructor-arg ref="cBean"/>-->
+    <!--</bean>-->
+    <!--<bean id="cBean" class="com.sean.spring.bean.C">-->
+        <!--<constructor-arg ref="bBean"/>-->
+    <!--</bean>-->
+
+    <bean id="bBean" class="com.sean.spring.bean.B">
+        <!--<property name="ccc" ref="cBean"/>-->
+    </bean>
+    <bean id="cBean" class="com.sean.spring.bean.C">
+        <!--<property name="bbb" ref="bBean"/>-->
+    </bean>
+
+    <!--<bean id="aBean" class="com.sean.spring.bean.A">-->
+        <!--<constructor-arg ref="bBean"/>-->
+        <!--<constructor-arg ref="cBean"/>-->
+    <!--</bean>-->
+</beans>
