@@ -6,11 +6,6 @@ package thread;
  */
 public class SynchronizedTest {
     public synchronized void test1(){
-
-    }
-    public void test2(){
-        synchronized (this){
-
-        }
+        System.out.println("Hello");
     }
 }
