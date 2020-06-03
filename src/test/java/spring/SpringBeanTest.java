@@ -6,6 +6,8 @@ import com.sean.spring.bean.UserFactory;
 import mybatis.UserMapperTest;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

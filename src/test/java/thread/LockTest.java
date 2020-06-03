@@ -10,9 +10,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockTest {
 
     public void test(){
+        int a = 0;
         Lock lock = new ReentrantLock();
-        lock.tryLock();
         lock.lock();
-        lock.unlock();
+        lock.tryLock();
+        try{
+            a++;
+        }finally {
+            lock.unlock();
+        }
     }
 }

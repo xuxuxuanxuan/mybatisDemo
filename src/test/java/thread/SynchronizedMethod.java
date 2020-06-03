@@ -8,15 +8,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SynchronizedMethod {
 
-    static  int i = 0;
+    volatile static  int i = 0;
 
     public synchronized void method() {
         System.out.println("Hello World!");
-    }
-
-    public synchronized void increase()
-    {
-        i++;
     }
 
 
